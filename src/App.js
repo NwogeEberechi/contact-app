@@ -1,27 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import { DatePicker } from 'antd';
+import React, { useState } from 'react';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { Layout} from 'antd';
+import { Icon } from 'semantic-ui-react'
+
+import SearchContact from './components/search-contact/search-contact.component';
+import AddContact from './components/new-contact/create-contact.component';
+import Contact from './components/contact-list/contacts.component';
+import ContactProfile from './components/contact-profile/contact-profile.component';
 import './App.css';
+import 'semantic-ui-css/semantic.min.css';
+
+const { Header, Sider, Content, Footer } = Layout;
 
 function App() {
+  const [collapsed, setCollapsed] = useState(false);
+
+  function toggle () {
+    setCollapsed(!collapsed);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <DatePicker />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout style={{ minHeight: '100vh' }}>
+        <Sider collapsible collapsed={collapsed} onCollapse={toggle} width="350px">
+          <div className="logo">
+            <Icon name="address book outline" size="big"/>
+          </div>
+          <AddContact />
+        </Sider>
+        <Layout>
+          <Header style={{ background: 'gray', padding: 0 }} >
+            <SearchContact />
+          </Header>
+          <Content style={{ margin: '0 16px' }}>
+            <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
+              <Router>
+                <Route path="/" component={Contact} exact={true}/>
+                <Route path="/profile" component={ContactProfile} />
+              </Router>
+            </div>
+          </Content>
+          <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+        </Layout>
+      </Layout>
   );
 }
 
