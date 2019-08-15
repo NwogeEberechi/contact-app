@@ -22,7 +22,7 @@ function Contacts () {
 
 
     return (
-      <Table basic='very'>
+      <Table basic='very' unstackable>
         <Table.Body>
           {contactRow}
         </Table.Body>

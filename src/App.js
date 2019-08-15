@@ -1,47 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
-import { Layout} from 'antd';
-import { Icon } from 'semantic-ui-react'
-
-import SearchContact from './components/search-contact/search-contact.component';
-import AddContact from './components/new-contact/create-contact.component';
-import Contact from './components/contact-list/contacts.component';
-import ContactProfile from './components/contact-profile/contact-profile.component';
+import DefaultLayout from './layout.component';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
 
-const { Header, Sider, Content, Footer } = Layout;
-
 function App() {
-  const [collapsed, setCollapsed] = useState(false);
-
-  function toggle () {
-    setCollapsed(!collapsed);
-  }
   return (
-    <Layout style={{ minHeight: '100vh' }}>
-        <Sider collapsible collapsed={collapsed} onCollapse={toggle} width="350px">
-          <div className="logo">
-            <Icon name="address book outline" size="big"/>
-          </div>
-          <AddContact />
-        </Sider>
-        <Layout>
-          <Header style={{ background: 'gray', padding: 0 }} >
-            <SearchContact />
-          </Header>
-          <Content style={{ margin: '0 16px' }}>
-            <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
-              <Router>
-                <Route path="/" component={Contact} exact={true}/>
-                <Route path="/profile" component={ContactProfile} />
-              </Router>
-            </div>
-          </Content>
-          <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
-        </Layout>
-      </Layout>
-  );
+    <Router>
+      <Route path="/" component={DefaultLayout}/>
+    </Router>
+  )
 }
 
 export default App;
+
+// [‎19-‎Jun-‎19 9:27 AM]  Joy Ichetaonye:  
+// @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,
+// @RequestParam(value = "vendorNum", required = false, defaultValue = "") String vendorNum,
+// @RequestParam(value = "customerNum", required = false, defaultValue = "") String custNum,
+// @RequestParam(value = "location", required = false, defaultValue = "") String location,
+// @RequestParam(value = "status", required = false, defaultValue = "5") int status,
+// @RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize,
+// @RequestParam(value = "startDate", required = false, defaultValue = "10") String startDate,
+// @RequestParam(value = "endDate", required = false, defaultValue = "10") String endDate, 
+ 
+
