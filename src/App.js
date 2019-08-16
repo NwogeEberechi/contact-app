@@ -6,7 +6,7 @@ import 'semantic-ui-css/semantic.min.css';
 
 function App() {
   return (
-    <Router>
+    <Router basename={"/contact-app"}>
       <Route path="/" component={DefaultLayout}/>
     </Router>
   )
