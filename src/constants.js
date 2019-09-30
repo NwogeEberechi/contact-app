@@ -4,9 +4,14 @@ export const initialState = {
         fullname: "",
         phone: "",
         address: "",
-        gender: ""
+        occupation: ""
     },
     searchContact: {
         key: ""
     }
 }
+
+export const genderOptions = [
+    { text: 'Female', value: 'female' },
+    { text: 'Male', value: 'male' }
+]

@@ -1,38 +1,47 @@
-import React, { useState } from 'react';
+import React, { useEffect, useContext, } from 'react';
 import { Form, Input, Select, Modal, Icon, Button, Message } from 'semantic-ui-react';
 
 import { useFormValidation } from "../../hooks";
 import { initialState } from '../../constants';
 import { contactValidator } from '../../services';
+import ContactsContext from '../../state/contexts/contacts.context';
+import AppLoader from '../../app-loader';
 
 import './create-contact.css';
 
-function AddContact ({match, contactId}) {
+function AddContact ({history}) {
+    const context = useContext(ContactsContext);
+    const { loading, addContact, successMessage } = context;
+
+    useEffect(()=> {
+        if (successMessage) {
+            setTimeout(() => history.push('/'), 5000)
+        }
+    }, [successMessage])
+
     const { 
-            values, 
-            handleInputChange, 
-            handleSubmit, 
-            handleBlur,
-            errors,
-        } = useFormValidation(initialState.newContact, contactValidator);
-    const genderOptions = [
-        { text: 'Female', value: 'female' },
-        { text: 'Male', value: 'male' }
-    ]
+        values, 
+        handleInputChange, 
+        handleSubmit, 
+        handleBlur,
+        errors,
+    } = useFormValidation(initialState.newContact, contactValidator, addContact, 'create');
 
     return (
-        <div className="add-contact-wrap">
+        <div className="relative add-contact-wrap">
             {/* <Modal open={isOpen} size="small">
                 <Modal.Header>
 
                 </Modal.Header>
 
                 <Modal.Content> */}
+                    {loading && <AppLoader /> }
                     <Form>
                         <Form.Field
                             control={Input}
                             name="email"
                             icon="mail"
+                            value={values.email || ''}
                             placeholder="Email"
                             iconPosition="left"
                             onChange={handleInputChange}
@@ -45,6 +54,7 @@ function AddContact ({match, contactId}) {
                             control={Input}
                             name="fullname"
                             icon="pencil"
+                            value={values.fullname || ''}
                             placeholder="Fullname"
                             iconPosition="left"
                             onChange={handleInputChange}
@@ -57,6 +67,7 @@ function AddContact ({match, contactId}) {
                             control={Input}
                             name="phone"
                             icon="phone square"
+                            value={values.phone || ''}
                             placeholder="Phone"
                             iconPosition="left"
                             onChange={handleInputChange}
@@ -66,16 +77,20 @@ function AddContact ({match, contactId}) {
                             control={Input}
                             name="address"
                             icon="address card"
+                            value={values.address || ''}
                             placeholder="Address"
                             iconPosition="left"
                             onChange={handleInputChange}
                             />
 
                         <Form.Field
-                            control={Select}
-                            name="gender"
-                            placeholder="Gender"
-                            options={genderOptions}
+                            control={Input}
+                            name="occupation"
+                            icon="address card"
+                            value={values.occupation || ''}
+                            placeholder="Occupation"
+                            iconPosition="left"
+                            onChange={handleInputChange}
                             />
 
                         <Button 

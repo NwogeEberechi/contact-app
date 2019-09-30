@@ -84,11 +84,11 @@ function UpdateContact ({match}) {
                             name="occupation"
                             icon="address card"
                             value={values.occupation || ''}
-                            placeholder="Address"
+                            placeholder="Occupation"
                             iconPosition="left"
                             onChange={handleInputChange}
                             />
-
+                            
                         <Button 
                             content="Update Contact"
                             basic

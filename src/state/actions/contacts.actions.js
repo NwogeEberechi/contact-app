@@ -39,6 +39,35 @@ export const updateContact = (dispatch) => async (contact) => {
     }
 }
 
+export const addContact = (dispatch) => async (contact) => {
+    dispatch({type: contactConstants.ADD_CONTACT_REQUEST})
+    try {
+        var response = await axiosInstance.post('/contacts', {
+            ...contact
+        })
+        if (response.status === 'error') {
+            dispatch({type: contactConstants.ADD_CONTACT_FAILURE, error: response.errors})
+        } else {
+            dispatch({type: contactConstants.ADD_CONTACT_SUCCESS, payload: response.data})
+        }    
+    }
+    catch(error) {
+        dispatch({type: contactConstants.ADD_CONTACT_FAILURE, error})
+    }
+}
+
+export const deleteContact = (dispatch) => async (id) => {
+    dispatch({type: contactConstants.DELETE_CONTACT_REQUEST})
+    try {
+        const response = await axiosInstance.delete(`/contacts/${id}`)
+        dispatch({type: contactConstants.DELETE_CONTACT_SUCCESS, payload: response.data})
+    }
+    catch(error) {
+        dispatch({type: contactConstants.DELETE_CONTACT_FAILURE, error})
+        console.log(error)
+    }
+}
+
 export const clearErrors = (dispatch) => () => {
     dispatch({type: contactConstants.CLEAR_ERRORS})
 }

@@ -5,7 +5,8 @@ export const initialState = {
     contact: { nothing: 'for you'},
     loading: false,
     errorMessage: null,
-    successMessage: null
+    successMessage: null,
+    deleteSuccess: false
 }
 
 export const contactReducer = (state=initialState, action) => {
@@ -62,6 +63,47 @@ export const contactReducer = (state=initialState, action) => {
                 errorMessage: action.payload.message,
                 loading: false
             }
+
+        case contactConstants.ADD_CONTACT_REQUEST:
+            return {
+                ...state,
+                loading: true
+            }
+        
+        case contactConstants.ADD_CONTACT_SUCCESS:
+            return {
+                ...state,
+                successMessage: action.payload.message,
+                loading: false
+            }
+
+        case contactConstants.ADD_CONTACT_FAILURE:
+            return {
+                ...state,
+                errorMessage: action.error.message,
+                loading: false
+            }
+
+            case contactConstants.DELETE_CONTACT_REQUEST:
+                    return {
+                        ...state,
+                        loading: true
+                    }
+                
+            case contactConstants.DELETE_CONTACT_SUCCESS:
+                return {
+                    ...state,
+                    successMessage: action.payload.message,
+                    deleteSuccess: true,
+                    loading: false
+                }
+    
+            case contactConstants.DELETE_CONTACT_FAILURE:
+                return {
+                    ...state,
+                    errorMessage: action.error.message,
+                    loading: false
+                }
 
         case contactConstants.CLEAR_ERRORS:
             return {

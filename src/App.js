@@ -5,7 +5,7 @@ import DefaultLayout from './layout.component';
 import ContactsContext from './state/contexts/contacts.context';
 import Notifier from './notifier';
 import { initialState, contactReducer } from './state/reducers/contacts.reducers';
-import { getContacts, getContact, updateContact, clearErrors } from './state/actions/contacts.actions'
+import { getContacts, getContact, updateContact, addContact, deleteContact, clearErrors } from './state/actions/contacts.actions'
 
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
@@ -20,7 +20,9 @@ function App() {
         getContacts: getContacts(dispatch),
         getContact: getContact(dispatch),
         clearErrors: clearErrors(dispatch),
-        updateContact: updateContact(dispatch)
+        updateContact: updateContact(dispatch),
+        addContact: addContact(dispatch),
+        deleteContact: deleteContact(dispatch)
       }}
      >
        <Notifier />

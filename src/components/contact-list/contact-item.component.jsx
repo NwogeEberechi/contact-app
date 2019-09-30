@@ -19,17 +19,6 @@ const ContactItem = ({contact}) => {
         justifyContent: 'center',
     }
 
-      // address: "No 3 Onikpa Road, Lagos"
-  // createdAt: "2019-07-18T20:49:14.465Z"
-  // email: "odogwu@gmail.com"
-  // facebook: "https://www.facebook.com/nzediegwu1"
-  // fullname: "Odogwu nsoffor"
-  // occupation: "Software Engineer"
-  // phone: "2347048923983"
-  // updatedAt: "2019-07-18T20:49:14.465Z"
-  // __v: 0
-  // _id: "5d30db4aa1f1f50017f2279e"
-
     return (
         <Table.Row>
             <Table.Cell><Checkbox /></Table.Cell>
@@ -46,7 +35,7 @@ const ContactItem = ({contact}) => {
                                 <NavLink to={`/edit-contact/${contact._id}`}>
                             <Dropdown.Item text='Edit' icon="edit" />
                             </NavLink>
-                            <DeleteContact />
+                            <DeleteContact id={contact._id}/>
                         </Dropdown.Menu>
                     </Dropdown>
                 </Menu.Menu>
