@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Button } from 'semantic-ui-react';
+import { Form, Input } from 'semantic-ui-react';
 
 import { useFormValidation } from "../../hooks";
 import { initialState } from '../../constants';
@@ -24,6 +24,7 @@ function SearchContact () {
                     name="key" placeholder='Search...' 
                     onChange={handleInputChange}
                     onBlur={handleBlur}
+                    value={values.key}
                     error={errors.key && true} />
             </Form>
         </div>

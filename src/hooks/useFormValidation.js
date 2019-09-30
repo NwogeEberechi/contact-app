@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 export function useFormValidation (initialState, validate, submitHandler, context) {
     let [values, setValues] = useState({...initialState});
@@ -11,12 +11,9 @@ export function useFormValidation (initialState, validate, submitHandler, contex
         if (isSubmitting) {
             if (Object.keys(errors).length === 0 ) {
                 submitHandler(values);
-                console.log('values', values)
-                console.log('valid')
                 setSubmitting(false);
             }
             else {
-                console.log('invalid')
                 setSubmitting(false);
             }
         }
