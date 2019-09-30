@@ -1,14 +1,33 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import { Route, HashRouter as Router } from 'react-router-dom';
+
 import DefaultLayout from './layout.component';
+import ContactsContext from './state/contexts/contacts.context';
+import Notifier from './notifier';
+import { initialState, contactReducer } from './state/reducers/contacts.reducers';
+import { getContacts, getContact, updateContact, clearErrors } from './state/actions/contacts.actions'
+
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
 
 function App() {
+  const [state, dispatch] = useReducer(contactReducer, initialState)
+
   return (
-    <Router basename="/">
-      <Route path="/" component={DefaultLayout}/>
-    </Router>
+    <ContactsContext.Provider
+      value={{
+        ...state,
+        getContacts: getContacts(dispatch),
+        getContact: getContact(dispatch),
+        clearErrors: clearErrors(dispatch),
+        updateContact: updateContact(dispatch)
+      }}
+     >
+       <Notifier />
+      <Router basename="/">
+        <Route path="/" component={DefaultLayout}/>
+      </Router>
+    </ContactsContext.Provider>
   )
 }
 

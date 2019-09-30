@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
-export function useFormValidation (initialState, validate, submitHandler) {
-
-    const [values, setValues] = useState(initialState);
+export function useFormValidation (initialState, validate, submitHandler, context) {
+    let [values, setValues] = useState({...initialState});
     const [errors, setErrors] = useState({});
     const [isSubmitting, setSubmitting] = useState(false);
+
+    useEffect(() => {setValues({...initialState})}, [initialState])
 
     useEffect(() => {
         if (isSubmitting) {
             if (Object.keys(errors).length === 0 ) {
-                // submitHandler();
+                submitHandler(values);
                 console.log('values', values)
                 console.log('valid')
                 setSubmitting(false);

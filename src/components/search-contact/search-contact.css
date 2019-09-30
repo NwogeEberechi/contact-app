@@ -3,3 +3,13 @@
     flex-direction: row;
     justify-content: center;
 }
+
+.search-form {
+        width: 80% !important;
+        margin: auto;
+}
+
+.search-input {
+    width: 98% !important;
+    height: 45px !important;
+}

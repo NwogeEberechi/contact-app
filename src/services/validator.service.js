@@ -3,14 +3,18 @@ export const  contactValidator = (values) => {
     // Email Errors
   if (!values.email) {
     errors.email = "Required Email";
+    return errors
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
     errors.email = "Invalid email address";
+    return errors
   }
   // Fullname Errors
   if (!values.fullname) {
     errors.fullname = "Required Fullname";
+    return errors
   } else if (values.fullname.length < 6) {
     errors.fullname = "Fullname must be at least 6 characters";
+    return errors
   }
   return errors;
 }

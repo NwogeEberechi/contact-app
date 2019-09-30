@@ -5,6 +5,7 @@ import { Icon, Button } from 'semantic-ui-react'
 
 import SearchContact from './components/search-contact/search-contact.component';
 import AddContact from './components/new-contact/create-contact.component';
+import UpdateContact from './components/update-contact/update-contact.component';
 import Contact from './components/contact-list/contacts.component';
 import ContactProfile from './components/contact-profile/contact-profile.component';
 import 'semantic-ui-css/semantic.min.css';
@@ -83,7 +84,7 @@ function DefaultLayout ({match}) {
                     <Route path="/" component={Contact} exact/>
                     <Route path="/profile" component={ContactProfile}/>
                     <Route path="/new-contact" render={(props) => <AddContact {...props} contactId="meeeee"/>}/>
-                    <Route path="/edit-contact/:id" component={AddContact} />
+                    <Route path="/edit-contact/:id" component={UpdateContact} />
                 </Switch>
             </div>
           </Content>

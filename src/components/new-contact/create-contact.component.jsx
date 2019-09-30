@@ -8,7 +8,6 @@ import { contactValidator } from '../../services';
 import './create-contact.css';
 
 function AddContact ({match, contactId}) {
-
     const { 
             values, 
             handleInputChange, 

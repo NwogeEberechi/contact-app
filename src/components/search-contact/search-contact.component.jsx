@@ -13,18 +13,18 @@ function SearchContact () {
             handleSubmit,
             handleBlur,
             errors
-        } = useFormValidation(initialState.searchContact, searchContactValidator);
+        } = useFormValidation(initialState.searchContact, searchContactValidator, null, 'search');
 
     return (
         <div className="search-contact-wrap">
-            <Form>       
-                <Input 
+            <Form className="search-form">       
+                <Input
+                className="search-input" 
                     action={{ icon: 'search', color: 'blue', onClick: handleSubmit }} 
                     name="key" placeholder='Search...' 
                     onChange={handleInputChange}
                     onBlur={handleBlur}
                     error={errors.key && true} />
-                {values.key !== "" && <Button content="Clear" style={{ marginLeft: '8px'  }} />}
             </Form>
         </div>
     )
