@@ -1,5 +1,6 @@
 import React, { useEffect, useContext, } from 'react';
 import { Form, Input, Button } from 'semantic-ui-react';
+import { Spin } from 'antd';
 
 import { useFormValidation } from "../../hooks";
 import { initialState } from '../../constants';
@@ -29,7 +30,8 @@ function AddContact ({history}) {
 
     return (
         <div className="relative add-contact-wrap">
-            {loading && <AppLoader /> }
+            {/* {loading && <AppLoader /> } */}
+            {loading && <Spin/>}
             <Form>
                 <Form.Field
                     control={Input}
@@ -66,6 +68,7 @@ function AddContact ({history}) {
                     iconPosition="left"
                     onChange={handleInputChange}
                     />
+                { errors.phone && <p > {errors.phone} </p>}
 
                 <Form.Field
                     control={Input}

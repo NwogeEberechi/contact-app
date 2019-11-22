@@ -3,3 +3,9 @@
     margin: 35px auto;
     text-align: center;
 }
+
+.ui.form > p {
+    text-align: left !important;
+    margin: 0 0 1.5em 0 !important;
+    color: red;
+}

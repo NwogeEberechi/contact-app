@@ -129,4 +129,12 @@ tr *:last-child {
 
 .relative {
     position: relative;
+    min-height: 200px;
+}
+
+.ant-spin-spinning {
+  position: absolute !important;
+  top: 50% !important;
+  right: 50% !important;
+  z-index: 1031 !important;
 }

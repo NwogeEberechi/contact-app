@@ -24,7 +24,7 @@ const ContactItem = ({contact}) => {
             <Table.Cell><Checkbox /></Table.Cell>
             <Table.Cell><div className="user-icon" style={style}><Icon name="user" size="big" /></div></Table.Cell>
             {/* <Table.Cell><span className="ant-avatar ant-avatar-lg ant-avatar-circle ant-avatar-image"><img src={userIcon} alt="user" /></span></Table.Cell> */}
-            <Table.Cell><Link to="/profile">{contact.fullname}</Link></Table.Cell>
+            <Table.Cell><Link to={`/profile/${contact._id}`}>{contact.fullname}</Link></Table.Cell>
             <Table.Cell>{contact.email}</Table.Cell>
             <Table.Cell>{contact.phone}</Table.Cell>
             <Table.Cell>{contact.address}</Table.Cell>

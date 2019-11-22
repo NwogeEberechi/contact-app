@@ -1,10 +1,11 @@
 import React, { useEffect, useContext, } from 'react';
 import { Form, Input, Button} from 'semantic-ui-react';
+import { Spin } from 'antd';
 
 import { useFormValidation } from "../../hooks";
 import { contactValidator } from '../../services';
 import ContactsContext from '../../state/contexts/contacts.context';
-import AppLoader from '../../app-loader';
+// import AppLoader from '../../app-loader';
 
 function UpdateContact ({match}) {
     const context = useContext(ContactsContext);
@@ -24,7 +25,8 @@ function UpdateContact ({match}) {
 
     return (
         <div className="relative add-contact-wrap">
-            {loading && <AppLoader /> }
+            {/* {loading && <AppLoader /> } */}
+            {loading && <Spin/>}
             <Form>
                 <Form.Field
                     control={Input}

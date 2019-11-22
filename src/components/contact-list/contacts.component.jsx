@@ -1,9 +1,10 @@
 import React, { useContext, useEffect } from 'react';
 import { Table } from 'semantic-ui-react';
+import { Spin } from 'antd';
 
 import ContactItem from './contact-item.component';
 import ContactsContext from '../../state/contexts/contacts.context';
-import AppLoader from '../../app-loader';
+// import AppLoader from '../../app-loader';
 import './contact-list.css';
 
 function Contacts () {
@@ -21,7 +22,8 @@ function Contacts () {
 
     return (
       <div className="relative">
-        {loading &&<AppLoader /> }
+        {/* {loading &&<AppLoader /> } */}
+        {loading && <Spin/>}
       <Table basic='very' unstackable>
         <Table.Body>
           {contactRow}

@@ -40,14 +40,16 @@ function DefaultLayout ({match}) {
           width="235px" 
           breakpoint="md" 
           collapsedWidth={isMobile ? 0 : 80}>
-          <div className="app-brand">
-            <div className="app-brand__logo">
-              <Icon name="address book outline" size="big"/>
+          <Link to="/">
+            <div className="app-brand">
+              <div className="app-brand__logo">
+                <Icon name="address book outline" size="big"/>
+              </div>
+              <div className="app-brand__title">
+                <h3>&nbsp; &nbsp; Contacts</h3>
+              </div>
             </div>
-            <div className="app-brand__title">
-              <h3>&nbsp; &nbsp; Contacts</h3>
-            </div>
-          </div>
+          </Link>
 
           <div className="app-link ">
             <Link to="/new-contact">
@@ -82,7 +84,7 @@ function DefaultLayout ({match}) {
             <div style={{ background: '#fff', minHeight: 360 }}>
                 <Switch>
                     <Route path="/" component={Contact} exact/>
-                    <Route path="/profile" component={ContactProfile}/>
+                    <Route path="/profile/:id" component={ContactProfile}/>
                     <Route path="/new-contact" render={(props) => <AddContact {...props} contactId="meeeee"/>}/>
                     <Route path="/edit-contact/:id" component={UpdateContact} />
                 </Switch>

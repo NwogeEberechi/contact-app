@@ -1,4 +1,34 @@
-.profile-header {
-    background-color: #001529 !important;
-    height: 110px;
+.contact-profile {
+    width: 60%;
+    margin: 35px auto !important;
+    padding: unset !important;
+    border: unset !important;
+
+    .profile-header {
+        background-color: #0469b9 !important;
+        height: 235px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 45px;
+
+        .profile-pic {
+            height: 85px;
+            width: 85px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .profile-name {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            color: white;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .contact-profile {
+        width: 80%;
+    }
 }
